@@ -5,7 +5,7 @@
   </head>
   <body>
     <center>
-      <form action="proveedoresO.php" method="POST">
+      <form action="proveedores.php" method="POST">
         <div>
           <h1>Formulario Proveedores</h1>
           <label>id del Proveedor</label>
