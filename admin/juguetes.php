@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./juguetes.css">
+
 </head>
 
 <body>
@@ -24,22 +26,35 @@
                     <a class="nav-link" href="#" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
+                    <a class="nav-link" href="#">Inventario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="#">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Iniciar sesión</a>
+                    <a class="nav-link" href="#">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Registrarse</a>
+                    <a class="nav-link" href="#">Ventas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mi cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Salir</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container">
+    <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
+        <a class="navbar-brand" href="#">Registrar Juguete</a>
+    </nav>
+
+    <div class="container-fuid p-5">
+        <div>
+            <p>Diligencia el formulario para registrar un nuevo juguete en el sistema</p>
+        </div>
         <form method="POST" action="juguetes.php">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -77,9 +92,8 @@
             </div>
             <button type="submit" class="btn btn-primary" name="boton">Registrar</button>
         </form>
-    </div>
 
-    <?php
+        <?php
         if(isset($_POST['boton'])){
             include("../abrir_conexion.php");
 
@@ -98,6 +112,13 @@
             include("../cerrar_conexion.php");
         }
     ?>
+    </div>
+
+    <footer class="page-footer font-small blue" style="border-top: 1px solid rgb(226, 226, 226);">
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="#"> Children's Play.com</a>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
