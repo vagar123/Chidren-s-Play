@@ -48,54 +48,32 @@
     </nav>
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-        <a class="navbar-brand" href="#">Registrar Juguete</a>
+        <a class="navbar-brand" href="#">Generar Inventario</a>
     </nav>
 
     <div class="container-fuid p-5">
         <div>
-            <p>Diligencia el formulario para registrar un nuevo juguete en el sistema</p>
+            <p>Diligencia el formulario para generar un nuevo Inventario</p>
         </div>
-        <form method="POST" action="juguetes.php">
+        <form method="POST" action="inventarios.php">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>Código</label>
                     <input type="text" class="form-control" name="codigo">
                 </div>
                 <div class="form-group col-md-6">
-                    <label>Nombre</label>
-                    <input type="text" class="form-control" name="nombre">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Categoria</label>
-                    <select class="form-control" name="categoria">
-                        <option>Seleccionar</option>
-                        <option value="Barbie">Barbie</option>
-                        <option value="Peluche">Peluche</option>
-                        <option value="Peluche">Muñeca/Muñeco</option>
-                        <option value="Peluche">Figura de acción</option>
-                        <option value="Peluche">Kits</option>
-                        <option value="Peluche">Rompecabezas</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Valor</label>
-                    <input type="text" class="form-control" name="valor">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Descripción</label>
-                <input type="text" class="form-control" name="desc">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
                     <label>Fecha</label>
                     <input type="date" class="form-control" name="fecha">
                 </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>Estado</label>
-                    <input type="text" class="form-control" name="estado">
+                    <label>Descripción</label>
+                    <input type="text" class="form-control" name="descripcion">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Autor</label>
+                    <input type="number" class="form-control" name="autor">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" name="boton">Registrar</button>
@@ -106,14 +84,11 @@
             include("../abrir_conexion.php");
 
             $codigo = $_POST['codigo'];
-            $nombre = $_POST['nombre'];
-            $categoria = $_POST['categoria'];
-            $valor = $_POST['valor'];
-            $descripcion = $_POST['desc'];
             $fecha = $_POST['fecha'];
-            $estado = $_POST['estado'];
+            $descripcion = $_POST['descripcion'];
+            $autor = $_POST['autor'];
 
-            $conexion->query("INSERT INTO $tabla9 (idJuguete,nomJuguete,categoria,valor_venta,descripcion,fechaPublica,estado) values ('$codigo','$nombre','$categoria','$valor','$descripcion','$fecha','$estado')");
+            $conexion->query("INSERT INTO $tabla6 (idInventario,fechaInventario,descripcion,idAdmin) values ('$codigo','$fecha','$descripcion','$autor')");
 
             echo"Los datos fueron ingresados correctamente";
 
