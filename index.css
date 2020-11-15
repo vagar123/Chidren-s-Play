@@ -1,17 +1,11 @@
 .navbar{
     background-color: rgba(0, 0, 0, 0.883);
     border-bottom: rgba(0, 0, 0, 0.883);
+    position: absolute;
 }
 
 .navbar .nav-item .nav-link{
     color: white;
-}
-
-.navbar{
-    width: 100%;
-    left: 0;
-	top: 0; 
-	position: fixed!important; 
 }
 
 .height-carousel{
