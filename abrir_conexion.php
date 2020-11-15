@@ -4,18 +4,15 @@
     $usuariodb = "root";
     $clavedb = "";
 
-    $tabla1 = "administrador";
-    $tabla2 = "categoriajuguete";
-    $tabla3 = "cliente";
-    $tabla4 = "facturas";
-    $tabla5 = "inven_juguete";
-    $tabla6 = "inventarios";
-    $tabla7 = "jugue_venta";
-    $tabla8 = "juguete_proveedor";
-    $tabla9 = "juguetes";
-    $tabla10 = "proveedores";
-    $tabla11 = "usuarios";
-    $tabla12 = "ventas";
+    $tabla1 = "facturas";
+    $tabla2 = "inven_juguete";
+    $tabla3 = "inventarios";
+    $tabla4 = "jugue_venta";
+    $tabla5 = "juguete_proveedor";
+    $tabla6 = "juguetes";
+    $tabla7 = "proveedores";
+    $tabla8 = "usuarios";
+    $tabla9 = "ventas";
 
     error_reporting(0);
 

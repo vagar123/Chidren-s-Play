@@ -26,13 +26,13 @@
                     <a class="nav-link" href="#" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inventario</a>
+                    <a class="nav-link" href="inventarios.php">Inventario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Proveedores</a>
+                    <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="registrarUsuario.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ventas</a>
@@ -73,10 +73,10 @@
                         <option>Seleccionar</option>
                         <option value="Barbie">Barbie</option>
                         <option value="Peluche">Peluche</option>
-                        <option value="Peluche">Muñeca/Muñeco</option>
-                        <option value="Peluche">Figura de acción</option>
-                        <option value="Peluche">Kits</option>
-                        <option value="Peluche">Rompecabezas</option>
+                        <option value="Muñeca/Muñeco">Muñeca/Muñeco</option>
+                        <option value="Figura de acción">Figura de acción</option>
+                        <option value="Kits">Kits</option>
+                        <option value="Rompecabezas">Rompecabezas</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
@@ -113,7 +113,7 @@
             $fecha = $_POST['fecha'];
             $estado = $_POST['estado'];
 
-            $conexion->query("INSERT INTO $tabla9 (idJuguete,nomJuguete,categoria,valor_venta,descripcion,fechaPublica,estado) values ('$codigo','$nombre','$categoria','$valor','$descripcion','$fecha','$estado')");
+            $conexion->query("INSERT INTO $tabla6 (idJuguete,nomJuguete,categoria,valor_venta,descripcion,fechaPublica,estado) values ('$codigo','$nombre','$categoria','$valor','$descripcion','$fecha','$estado')");
 
             echo"Los datos fueron ingresados correctamente";
 

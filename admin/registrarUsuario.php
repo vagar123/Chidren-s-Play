@@ -30,7 +30,7 @@
                     <a class="nav-link" href="#">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="#">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ventas</a>
@@ -46,32 +46,56 @@
     </nav>
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-        <a class="navbar-brand" href="#">Generar Inventario</a>
+        <a class="navbar-brand" href="#">Registrar Usuario</a>
     </nav>
 
     <div class="container-fuid p-5">
         <div>
-            <p>Diligencia el formulario para generar un nuevo Inventario</p>
+            <p>Diligencia el formulario para registrar un nuevo cliente en el sistema</p>
         </div>
-        <form method="POST" action="inventarios.php">
+        <form method="POST" action="registrarUsuario.php">
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                     <label>Código</label>
                     <input type="text" class="form-control" name="codigo">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Fecha</label>
-                    <input type="date" class="form-control" name="fecha">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>Descripción</label>
-                    <input type="text" class="form-control" name="descripcion">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" name="nombre">
                 </div>
                 <div class="form-group col-md-6">
-                    <label>Autor</label>
-                    <input type="number" class="form-control" name="autor">
+                    <label>Apellido</label>
+                    <input type="text" class="form-control" name="apellido">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Correo electrónico</label>
+                    <input type="email" class="form-control" name="correo">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Teléfono</label>
+                    <input type="text" class="form-control" name="telefono">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Género</label>
+                    <select class="form-control" name="genero">
+                        <option>Seleccionar</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Rol</label>
+                    <select class="form-control" name="rol">
+                        <option>Seleccionar</option>
+                        <option value="Administrador">Administrador</option>
+                        <option value="Cliente">Cliente</option>
+                    </select>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" name="boton">Registrar</button>
@@ -82,11 +106,14 @@
             include("../abrir_conexion.php");
 
             $codigo = $_POST['codigo'];
-            $fecha = $_POST['fecha'];
-            $descripcion = $_POST['descripcion'];
-            $autor = $_POST['autor'];
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $correo = $_POST['correo'];
+            $telefono = $_POST['telefono'];
+            $genero = $_POST['genero'];
+            $rol = $_POST['rol'];
 
-            $conexion->query("INSERT INTO $tabla3 (idInventario,fechaInventario,descripcion,idAdmin) values ('$codigo','$fecha','$descripcion','$autor')");
+            $conexion->query("INSERT INTO $tabla8 (idUsuario,nomUsuario,apellUsuario,correoUsuario,teleUsuario,generoUsuario,rolUsuario) values ('$codigo','$nombre','$apellido','$correo','$telefono','$genero','$rol')");
 
             echo "Los datos fueron ingresados correctamente";
 
