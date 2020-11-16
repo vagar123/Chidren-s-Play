@@ -1,0 +1,8 @@
+.navbar {
+  background-color: rgba(0, 0, 0, 0.883);
+  border-bottom: rgba(0, 0, 0, 0.883);
+}
+
+.navbar .nav-item .nav-link {
+  color: white;
+}

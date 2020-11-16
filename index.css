@@ -1,7 +1,6 @@
 .navbar{
     background-color: rgba(0, 0, 0, 0.883);
     border-bottom: rgba(0, 0, 0, 0.883);
-    position: absolute;
 }
 
 .navbar .nav-item .nav-link{
@@ -12,6 +11,7 @@
     max-height: 610px;
     min-height: 610px;
 }
+
 
 .info, .row{
     display: flex;
@@ -32,4 +32,66 @@ footer{
 
 .list-unstyled li a{
     color: white !important;
+}
+
+/*Login*/
+
+#login{
+    margin-top: 200px;
+    width: 100%;
+}
+
+h4 {
+    font-weight: bold;
+    color: #fff;
+}
+
+.close {
+    color: #fff;
+    transform: scale(1.2)
+}
+
+.modal-content {
+    font-weight: bold;
+    background: #753a88; 
+}
+
+.form-control {
+    margin: 1em 0;
+}
+
+.form-control:hover, .form-control:focus {
+    box-shadow: none;  
+    border-color: #fff;
+}
+  
+.username, .password {
+    border: none;
+    color: #fff;
+    box-shadow: none;
+    border-radius: 0;
+    border-bottom: 2px solid #eee;
+    padding-left: 0;
+    font-weight: normal;
+    background: #753a88; 
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #eee;  
+}
+
+.login {
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: none;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all .5s;
+    margin-top: 1em;
+}
+
+.login:hover {
+    background: #000000;
+    color: #fff;
 }

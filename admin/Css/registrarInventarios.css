@@ -12,6 +12,12 @@
     color: rgb(255, 255, 255);
 }
 
-#sidebar{
-    width: 100%;
+.container{
+    border: 1px solid #cccccc;
+}
+
+.navbar-brand{
+    color: #e63378;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
 }
