@@ -24,10 +24,10 @@
                     <a class="nav-link" href="#" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inventario</a>
+                    <a class="nav-link" href="./inventario.php">Inventario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Proveedores</a>
+                    <a class="nav-link" href="./proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Usuarios</a>
@@ -45,55 +45,6 @@
         </div>
     </nav>
 
-    <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-        <a class="navbar-brand" href="#">Generar Inventario</a>
-    </nav>
-
-    <div class="container-fuid p-5">
-        <div>
-            <p>Diligencia el formulario para generar un nuevo Inventario</p>
-        </div>
-        <form method="POST" action="inventarios.php">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Código</label>
-                    <input type="text" class="form-control" name="codigo">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Fecha</label>
-                    <input type="date" class="form-control" name="fecha">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>Descripción</label>
-                    <input type="text" class="form-control" name="descripcion">
-                </div>
-                <div class="form-group col-md-6">
-                    <label>Autor</label>
-                    <input type="number" class="form-control" name="autor">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" name="boton">Registrar</button>
-        </form>
-
-        <?php
-        if (isset($_POST['boton'])) {
-            include("../abrir_conexion.php");
-
-            $codigo = $_POST['codigo'];
-            $fecha = $_POST['fecha'];
-            $descripcion = $_POST['descripcion'];
-            $autor = $_POST['autor'];
-
-            $conexion->query("INSERT INTO $tabla3 (idInventario,fechaInventario,descripcion,idAdmin) values ('$codigo','$fecha','$descripcion','$autor')");
-
-            echo "Los datos fueron ingresados correctamente";
-
-            include("../cerrar_conexion.php");
-        }
-        ?>
-    </div>
 
     <footer class="page-footer font-small blue" style="border-top: 1px solid rgb(226, 226, 226);">
         <div class="footer-copyright text-center py-3">© 2020 Copyright:

@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="./juguetes.css">
+    <link rel="stylesheet" href="css/juguetes.css">
 
 </head>
 
@@ -26,13 +26,13 @@
                     <a class="nav-link" href="#" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="inventarios.php">Inventario</a>
+                    <a class="nav-link" href="./proyecto/admin/inventarios.php">Inventario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="proveedores.php">Proveedores</a>
+                    <a class="nav-link" href="./proyecto/admin/proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="registrarUsuario.php">Usuarios</a>
+                    <a class="nav-link" href="./proyecto/admin/registrarUsuario.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ventas</a>
