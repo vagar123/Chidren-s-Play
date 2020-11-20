@@ -12,12 +12,22 @@
     color: rgb(255, 255, 255);
 }
 
-#sidebar{
-    width: 30%;
+.navbarD{
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+}
+
+.container{
+    border: 1px solid #cccccc;
 }
 
 .titulo{
     color: #e63378;
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
+}
+
+table thead{
+    background-color: #17a2b8;
+    color: white;
 }

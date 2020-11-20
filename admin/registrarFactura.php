@@ -33,7 +33,7 @@
                     <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ventas</a>
@@ -49,64 +49,91 @@
     </nav>
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-        <a class="navbar-brand" style="color:#e63378;">Inventarios / Generar Inventario</a>
+        <a class="navbar-brand" style="color:#e63378;">Ventas / Generar Factura</a>
         <button type="button" class="btn btn-info"><a href="inventario.php" style="color:white; text-decoration:none;">Atrás</a></button>
     </nav>
 
     <div class="alert alert-primary" role="alert">
-        No olvides ingresar el código del nuevo inventario y tu id de usuario en el formulario inferior para que estos se registren exitosamente!
+        No olvides ingresar el código de la factura junto con la información de los productos que adquirirá el cliente!
     </div>
 
     <div class="container-fluid ">
         <div class="container mt-5 mb-5 pt-4">
-            <form method="POST" action="registrarInventarios.php" class="m-3">
-                <p>Diligencia el formulario para generar un nuevo Inventario</p>
+            <form method="POST" action="registrarFactura.php">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Código</label>
-                        <input type="text" class="form-control" name="codigo">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Fecha</label>
-                        <input type="date" class="form-control" name="fecha">
+                    <div class="form-group col-md-12">
+                        <label>Código Factura</label>
+                        <input type="text" class="form-control" name="idFactura">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label>Descripción</label>
-                        <input type="text" class="form-control" name="descripcion">
+                        <label>Código Juguete</label>
+                        <input type="text" class="form-control" name="idJuguete">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control" placeholder="nombre completo" name="cantidad">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success" name="boton">Generar</button>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Valor Unitario</label>
+                        <input type="text" class="form-control" name="valorUni">
+                    </div>
+                </div>
+                <button class="btn btn-success mb-3" type="submit" name="boton">
+                    Registrar
+                </button>
             </form>
-        </div>
 
-        <div class="container mt-5 mb-5 pt-4">
-            <form method="POST" action="registrarInventarios.php" class="m-3">
-                <p>Diligencia el formulario para registrar completamente la generación del inventario</p>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Código</label>
-                        <input type="text" class="form-control" name="idInventario">
+            <div>
+                <form method="POST" action="registrarFactura.php">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Código</label>
+                            <input type="text" class="form-control" name="codigo">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Documento cliente</label>
+                            <input type="text" class="form-control" name="cliente">
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Usuario</label>
-                        <input type="text" class="form-control" name="usuario">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Fecha</label>
+                            <input type="date" class="form-control" name="fecha">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Empleado</label>
+                            <input type="text" class="form-control" placeholder="nombre completo" name="empleado">
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-success" name="boton2">Registrar</button>
-                </div>
-            </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label>Descripción</label>
+                            <input type="text" class="form-control" name="descripcion">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Valor Total</label>
+                            <input type="text" class="form-control" name="valorTotal">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success mb-3" name="boton2">Registrar</button>
+                </form>
+            </div>
         </div>
 
         <?php
         if (isset($_POST['boton'])) {
             include("../abrir_conexion.php");
 
-            $codigo = $_POST['codigo'];
-            $fecha = $_POST['fecha'];
-            $descripcion = $_POST['descripcion'];
+            $codigoF = $_POST['idFactura'];
+            $codigoJ = $_POST['idJuguete'];
+            $cantidad = $_POST['cantidad'];
+            $valorUni = $_POST['valorUni'];
 
-            $conexion->query("INSERT INTO $tabla3 (idInventario,fechaInventario,descripcion) values ('$codigo','$fecha','$descripcion')");
+            $conexion->query("INSERT INTO $tabla4 (idJugu,idFact,cantidad,valorUnita) values ('$codigoF','$codigoJ','$cantidad','$valorUni')");
 
             echo '<script type="text/javascript">
             Swal.fire({
@@ -120,10 +147,14 @@
         }
         if (isset($_POST['boton2'])) {
             include("../abrir_conexion.php");
-            $inventario = $_POST['idInventario'];
-            $autor = $_POST['usuario'];
 
-            $conexion->query("INSERT INTO $tabla10 (idInv,idUsua) values ('$inventario','$autor')");
+            $codigo = $_POST['codigo'];
+            $cliente = $_POST['cliente'];
+            $fecha = $_POST['fecha'];
+            $descripcion = $_POST['descripcion'];
+            $valorT = $_POST['valorTotal'];
+
+            $conexion->query("INSERT INTO $tabla1 (idFactura,idUsu,fecha,descripcion,valorTotal) values ('$codigo','$cliente','$fecha','$descripcion','$valorT')");
 
             echo '<script type="text/javascript">
             Swal.fire({

@@ -29,13 +29,13 @@
                     <a class="nav-link" href="inicio.html" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inventario</a>
+                    <a class="nav-link" href="inventario.php">Inventario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ventas</a>
@@ -50,43 +50,8 @@
         </div>
     </nav>
 
-    <div class="container d-md-flex align-items-stretch">
-        <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5 pt-5" style="width: 100%;">
-            <h2 class="mb-4">Sidebar 8</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <nav id="sidebar">
+    <div class="container" style="width: 100%; display:flex; margin-right:0%;margin-left:0%;">
+        <nav id="sidebar" style="width: 25%; border-right: 1px solid #ccc;">
             <div class="p-4 pt-5">
                 <p>Proveedores prinicpales</p>
                 <ul class="list-unstyled components mb-5">
@@ -99,8 +64,8 @@
                 <div class="mb-5">
                     <p>Nuevos proveedores</p>
                     <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link">Leap Frog</a>
-                        <a href="#" class="tag-cloud-link">JollyBaby</a>
+                        <a href="#" class="tag-cloud-link">Leap Frog</a> <br>
+                        <a href="#" class="tag-cloud-link">JollyBaby</a> <br>
                         <a href="#" class="tag-cloud-link">PlayMobil</a>
                     </div>
                 </div>
@@ -117,7 +82,76 @@
                 </div>
             </div>
         </nav>
+
+        <div style="width: 100%; margin-top: 60px;">
+            <h2 class="titulo pb-4" style="margin-left: 50px; color: #e63378; font-family: 'Nunito', sans-serif; font-weight: 700;">Proveedores actuales</h2>
+            <nav class="navbar navbar-light bg-light" style="width: 100%; margin-left:50px;">
+                <p>Consulta los productos que ha entregado cada proveedor, ingrese por favor el código del proveedor.</p>
+                <form class="form-inline pt-4 pb-4" method="POST" action="proveedores.php">
+                    <button type="submit" class="btn btn-primary mb-2" name="boton">Consultar</button>
+                </form>
+                <button type='button' class='btn btn-success'><a href="registrarProveedores.php" style="color:white; text-decoration:none;">Ingresar proveedor</a></button>
+            </nav>
+            <table class="table" style="width: 100%; margin:50px;">
+                <thead style="background-color: #17a2b8; color:white;">
+                    <tr>
+                        <th scope='col'>Código</th>
+                        <th scope='col'>Proveedor</th>
+                        <th scope='col'>Correo</th>
+                        <th scope='col'>Teléfono</th>
+                        <th scope='col'>Dirección</th>
+                        <th scope='col'>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include("../abrir_conexion.php");
+                        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla7");
+                        while ($consulta = mysqli_fetch_array($resultados)) {
+                            echo "
+                                <tr>
+                                    <td>" . $consulta['idProveedor'] . "</td>
+                                    <td>" . $consulta['nomProveedor'] . "</td>
+                                    <td>" . $consulta['correoProveedor'] . "</td>
+                                    <td>" . $consulta['telProveedor'] . "</td>
+                                    <td>" . $consulta['direccionProveedor'] . "</td>
+                                    <td>" . $consulta['fechaEntrada'] . "</td>
+                                </tr>
+                            ";
+                        }
+                        if (isset($_POST['boton'])) {
+                            $resultados = mysqli_query($conexion, "SELECT $tabla7.idProveedor, $tabla7.nomProveedor, $tabla6.idJuguete, $tabla6.nomJuguete FROM $tabla7 INNER JOIN $tabla5 ON $tabla7.idProveedor = $tabla5.idProv INNER JOIN $tabla6 ON $tabla5.idJug = $tabla6.idJuguete");
+                            
+                            echo "
+                                <table class='table' style='width: 100%; margin:50px;'>
+                                <thead style='background-color: #17a2b8; color: white;'>
+                                    <tr>
+                                        <th scope='col'>Código Proveedor</th>
+                                        <th scope='col'>Proveedor</th>
+                                        <th scope='col'>Código Juguete</th>
+                                        <th scope='col'>Juguete</th>
+                                    </tr>
+                                </thead>
+                            ";
+                            
+                            while ($consulta = mysqli_fetch_array($resultados)) {
+                                echo "
+                                    <tbody>
+                                        <tr>
+                                        <td>" . $consulta['idProveedor'] . "</td>
+                                        <td>" . $consulta['nomProveedor'] . "</td>
+                                        <td>" . $consulta['idJuguete'] . "</td>
+                                        <td>" . $consulta['nomJuguete'] . "</td>
+                                        </tr>
+                                    </tbody>
+                                ";
+                            }
+                        }
+                    include("../cerrar_conexion.php");
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
-
 </html>
