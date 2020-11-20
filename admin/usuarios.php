@@ -86,9 +86,9 @@
                     <label>Consulta la información del administrador que generó un inventario. Ingresa el Id del inventario</label>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="text" class="form-control" name="codigo" placeholder="Id del inventario" autocomplete="off">
+                    <input type="text" class="form-control" name="cargo" placeholder="Cargo" autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary mb-2" name="boton">Consultar</button>
+                <input type="submit" value="Consultar" name="btn2">
             </form>
         </div>
 
@@ -107,12 +107,23 @@
             <tbody>
                 <?php
                 include("../abrir_conexion.php");
+                $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8");
+                while ($consulta = mysqli_fetch_array($resultados)) {
+                    echo "
+                  <tr>
+                    <th>" . $consulta['idUsuario'] . "</th>
+                    <td>" . $consulta['nomUsuario'] . "</td>
+                    <td>" . $consulta['apellUsuario'] . "</td>
+                    <td>" . $consulta['correoUsuario'] . "</td>
+                    <td>" . $consulta['teleUsuario'] . "</td>
+                    <td>" . $consulta['generoUsuario'] . "</td>
+                    <td>" . $consulta['rolUsuario'] . "</td>
+                  </tr>
+                ";
+                } if (isset($_POST['btn2'])) {
+                    $cargo = $_POST['cargo'];
 
-                if (isset($_POST['boton'])) {
-
-                    $codigo = $_POST['codigo'];
-
-                    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8 WHERE rolUsuario=$codigo");
+                    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8 WHERE idUsuario=$cargo");
 
                     while ($consulta = mysqli_fetch_array($resultados)) {
                         echo "
@@ -138,23 +149,6 @@
                         ";
                     }
                 }
-
-
-                $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8");
-                while ($consulta = mysqli_fetch_array($resultados)) {
-                    echo "
-                  <tr>
-                    <th>" . $consulta['idUsuario'] . "</th>
-                    <td>" . $consulta['nomUsuario'] . "</td>
-                    <td>" . $consulta['apellUsuario'] . "</td>
-                    <td>" . $consulta['correoUsuario'] . "</td>
-                    <td>" . $consulta['teleUsuario'] . "</td>
-                    <td>" . $consulta['generoUsuario'] . "</td>
-                    <td>" . $consulta['rolUsuario'] . "</td>
-                  </tr>
-                ";
-                }
-
                 include("../cerrar_conexion.php");
                 ?>
             </tbody>
