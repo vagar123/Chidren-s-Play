@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Css/inventario.css">
+    <link rel="stylesheet" href="Css/usuarios.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -29,13 +29,13 @@
                     <a class="nav-link" href="inicio.html" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inventario</a>
+                    <a class="nav-link" href="inventario.php">Inventario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="usuarios.php">Usuarios</a>
+                    <a class="nav-link" href="#">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ventas</a>
@@ -51,16 +51,37 @@
     </nav>
 
     <div class="container mt-5 mb-5 pt-4">
-        <h2 class="titulo pb-4">Inventarios actuales</h2>
-        <nav class="navbar navbar-light bg-light navbarD">
+        <h2 class="titulo pb-4">Usuarios</h2>
+        <div class="card text-center mb-5">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Bandeja de entrada</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mensajes directos (Admins)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Usuarios inactivos</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <p class="card-text" style="text-align: left;"><b>Elena Vargas: </b>"Buenos días quisiera saber si pronto traeran la nueva colección de The Power Rangers" <a href="#">Responder</a></p>
+
+                <p class="card-text" style="text-align: left;"><b>Jhon Caicedo: </b>"Impementarán productos para bebes de 0 a 2 años?" <a href="#">Responder</a></p>
+
+                <p class="card-text" style="text-align: left;"><b>Luis Triana: </b>"Felicidades por la gestión que realizan, ¡cliente satifecho!" <a href="#">Responder</a></p>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-light bg-light mt-5 mb-1">
             <a class="navbar-brand" href="#">Herramientas</a>
-            <ul class="list-group list-group-horizontal">
-                <button type="button" class="btn btn-success"><a href="registrarInventarios.php" style="color:white; text-decoration:none;">Generar nuevo inventario</a></button>
-            </ul>
+            <button type="button" class="btn btn-success"><a href="registrarUsuario.php" style="color:white; text-decoration:none;">Registrar Usuario</a></button>
         </nav>
 
         <div>
-            <form class="form-inline pt-4 pb-4" method="POST" action="inventario.php">
+            <form class="form-inline pt-4 pb-4" method="POST" action="usuarios.php">
                 <div class="form-group mb-2">
                     <label>Consulta la información del administrador que generó un inventario. Ingresa el Id del inventario</label>
                 </div>
@@ -74,29 +95,24 @@
         <table class='table table-bordered' style="margin-bottom:35px;">
             <thead>
                 <tr>
-                    <th scope='col'>Código</th>
-                    <th scope='col'>Fecha</th>
-                    <th scope='col'>Descripción</th>
+                    <th scope='col'>Documento</th>
+                    <th scope='col'>Nombre</th>
+                    <th scope='col'>Apellido</th>
+                    <th scope='col'>Correo electrónico</th>
+                    <th scope='col'>Teléfono</th>
+                    <th scope='col'>Género</th>
+                    <th scope='col'>Rol</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include("../abrir_conexion.php");
-                $resultados = mysqli_query($conexion, "SELECT * FROM $tabla3");
-                while ($consulta = mysqli_fetch_array($resultados)) {
-                    echo "
-                  <tr>
-                    <th>" . $consulta['idInventario'] . "</th>
-                    <td>" . $consulta['fechaInventario'] . "</td>
-                    <td>" . $consulta['descripcion'] . "</td>
-                  </tr>
-                ";
-                }
+
                 if (isset($_POST['boton'])) {
 
                     $codigo = $_POST['codigo'];
 
-                    $resultados = mysqli_query($conexion, "SELECT $tabla8.idUsuario, $tabla8.nomUsuario, $tabla8.apellUsuario, $tabla3.idInventario FROM $tabla3 INNER JOIN $tabla10 ON $tabla3.idInventario = $tabla10.idInv INNER JOIN $tabla8 ON $tabla10.idUsua = $tabla8.idUsuario WHERE $tabla3.idInventario=$codigo");
+                    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8 WHERE rolUsuario=$codigo");
 
                     while ($consulta = mysqli_fetch_array($resultados)) {
                         echo "
@@ -115,13 +131,30 @@
                             <th>" . $consulta['idUsuario'] . "</th>
                             <td>" . $consulta['nomUsuario'] . "</td>
                             <td>" . $consulta['apellUsuario'] . "</td>
-                            <td>" . $consulta['idInventario'] . "</td>
+                            <td>" . $consulta['rolUsuario'] . "</td>
                             </tr>
                         </tbody>
                         </table>
                         ";
                     }
                 }
+
+
+                $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8");
+                while ($consulta = mysqli_fetch_array($resultados)) {
+                    echo "
+                  <tr>
+                    <th>" . $consulta['idUsuario'] . "</th>
+                    <td>" . $consulta['nomUsuario'] . "</td>
+                    <td>" . $consulta['apellUsuario'] . "</td>
+                    <td>" . $consulta['correoUsuario'] . "</td>
+                    <td>" . $consulta['teleUsuario'] . "</td>
+                    <td>" . $consulta['generoUsuario'] . "</td>
+                    <td>" . $consulta['rolUsuario'] . "</td>
+                  </tr>
+                ";
+                }
+
                 include("../cerrar_conexion.php");
                 ?>
             </tbody>

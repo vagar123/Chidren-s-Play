@@ -7,6 +7,7 @@
     <title>Child's Play</title>
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="stylesheet" href="./juguetes.css">
 
 </head>
@@ -46,10 +47,11 @@
     </nav>
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-        <a class="navbar-brand" href="#">Registrar Usuario</a>
-    </nav>
+    <a class="navbar-brand" style="color:#e63378;">Usuarios / Registrar Usuario</a>
+    <button type="button" class="btn btn-info"><a href="usuarios.php" style="color:white; text-decoration:none;">Atrás</a></button>
+  </nav>
 
-    <div class="container-fuid p-5">
+    <div class="container m-5 p-5" style="border: 1px solid #cccccc">
         <div>
             <p>Diligencia el formulario para registrar un nuevo cliente en el sistema</p>
         </div>
@@ -98,7 +100,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" name="boton">Registrar</button>
+            <button type="submit" class="btn btn-success" name="boton">Registrar</button>
         </form>
 
         <?php
@@ -115,18 +117,19 @@
 
             $conexion->query("INSERT INTO $tabla8 (idUsuario,nomUsuario,apellUsuario,correoUsuario,teleUsuario,generoUsuario,rolUsuario) values ('$codigo','$nombre','$apellido','$correo','$telefono','$genero','$rol')");
 
-            echo "Los datos fueron ingresados correctamente";
+            echo '
+                <script type="text/javascript">
+                Swal.fire({
+                    icon: "success",
+                    title: "Generación exitosa",
+                    text: "El nuevo usuario fue ingresado correctamente!",
+                })
+            ';
 
             include("../cerrar_conexion.php");
         }
         ?>
     </div>
-
-    <footer class="page-footer font-small blue" style="border-top: 1px solid rgb(226, 226, 226);">
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="#"> Children's Play.com</a>
-        </div>
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

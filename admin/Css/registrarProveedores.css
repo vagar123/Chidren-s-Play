@@ -1,8 +1,13 @@
-.navbar {
+.navbar{
   background-color: rgba(0, 0, 0, 0.883);
   border-bottom: rgba(0, 0, 0, 0.883);
 }
 
-.navbar .nav-item .nav-link {
+.navbar .nav-item .nav-link{
   color: white;
+  margin-right: 60px;
+}
+
+.navbar .nav-item .nav-link:hover{
+  color: rgb(255, 255, 255);
 }

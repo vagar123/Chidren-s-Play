@@ -12,7 +12,6 @@
     $tabla6 = "juguetes";
     $tabla7 = "proveedores";
     $tabla8 = "usuarios";
-    $tabla9 = "ventas";
     $tabla10 = "inven_usua";
 
     error_reporting(0);
