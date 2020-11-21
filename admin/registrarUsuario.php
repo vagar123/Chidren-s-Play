@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Child's Play</title>
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <link rel="stylesheet" href="./juguetes.css">
+    <link rel="stylesheet" href="Css/registrarProveedores.css">
 
 </head>
 
@@ -22,34 +24,31 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" style="color:white;">Inicio</a>
+                    <a class="nav-link" href="inicio.html" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inventario</a>
+                    <a class="nav-link" href="inventario.php">Inventario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Proveedores</a>
+                    <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clientes</a>
+                    <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ventas</a>
+                    <a class="nav-link" href="facturas.php">Ventas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi cuenta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="../index.html">Salir</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-    <a class="navbar-brand" style="color:#e63378;">Usuarios / Registrar Usuario</a>
-    <button type="button" class="btn btn-info"><a href="usuarios.php" style="color:white; text-decoration:none;">Atrás</a></button>
-  </nav>
+        <a class="navbar-brand" style="color:#e63378;">Usuarios / Registrar Usuario</a>
+        <button type="button" class="btn btn-info"><a href="usuarios.php" style="color:white; text-decoration:none;">Atrás</a></button>
+    </nav>
 
     <div class="container m-5 p-5" style="border: 1px solid #cccccc">
         <div>
@@ -131,9 +130,6 @@
         ?>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </body>
 
 </html>

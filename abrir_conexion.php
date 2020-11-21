@@ -12,7 +12,7 @@
     $tabla6 = "juguetes";
     $tabla7 = "proveedores";
     $tabla8 = "usuarios";
-    $tabla10 = "inven_usua";
+    $tabla9 = "inven_usu";
 
     error_reporting(0);
 

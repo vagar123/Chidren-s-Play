@@ -36,13 +36,10 @@
                     <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ventas</a>
+                    <a class="nav-link" href="facturas.php">Ventas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi cuenta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="../index.html">Salir</a>
                 </li>
             </ul>
         </div>
@@ -50,7 +47,7 @@
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
         <a class="navbar-brand" style="color:#e63378;">Ventas / Generar Factura</a>
-        <button type="button" class="btn btn-info"><a href="inventario.php" style="color:white; text-decoration:none;">Atrás</a></button>
+        <button type="button" class="btn btn-info"><a href="facturas.php" style="color:white; text-decoration:none;">Atrás</a></button>
     </nav>
 
     <div class="alert alert-primary" role="alert">
@@ -59,34 +56,6 @@
 
     <div class="container-fluid ">
         <div class="container mt-5 mb-5 pt-4">
-            <form method="POST" action="registrarFactura.php">
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label>Código Factura</label>
-                        <input type="text" class="form-control" name="idFactura">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Código Juguete</label>
-                        <input type="text" class="form-control" name="idJuguete">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Cantidad</label>
-                        <input type="text" class="form-control" placeholder="nombre completo" name="cantidad">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
-                        <label>Valor Unitario</label>
-                        <input type="text" class="form-control" name="valorUni">
-                    </div>
-                </div>
-                <button class="btn btn-success mb-3" type="submit" name="boton">
-                    Registrar
-                </button>
-            </form>
-
             <div>
                 <form method="POST" action="registrarFactura.php">
                     <div class="form-row">
@@ -110,41 +79,49 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>Descripción</label>
                             <input type="text" class="form-control" name="descripcion">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Valor Total</label>
-                            <input type="text" class="form-control" name="valorTotal">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success mb-3" name="boton2">Registrar</button>
                 </form>
             </div>
+
+            <form method="POST" action="registrarFactura.php">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label>Código Factura</label>
+                        <input type="text" class="form-control" name="idFactura">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Código Juguete</label>
+                        <input type="text" class="form-control" name="idJuguete">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Cantidad</label>
+                        <input type="text" class="form-control" placeholder="nombre completo" name="cantidad">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Valor Unitario</label>
+                        <input type="text" class="form-control" name="valorUni">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Valor Total</label>
+                        <input type="text" class="form-control" name="valorTotal">
+                    </div>
+                </div>
+                <button class="btn btn-success mb-3" type="submit" name="boton">
+                    Registrar
+                </button>
+            </form>
         </div>
 
         <?php
-        if (isset($_POST['boton'])) {
-            include("../abrir_conexion.php");
-
-            $codigoF = $_POST['idFactura'];
-            $codigoJ = $_POST['idJuguete'];
-            $cantidad = $_POST['cantidad'];
-            $valorUni = $_POST['valorUni'];
-
-            $conexion->query("INSERT INTO $tabla4 (idJugu,idFact,cantidad,valorUnita) values ('$codigoF','$codigoJ','$cantidad','$valorUni')");
-
-            echo '<script type="text/javascript">
-            Swal.fire({
-                icon: "success",
-                title: "Generación exitosa",
-                text: "El nuevo inventario fue generado correctamente!",
-            });
-            </script>';
-
-            include("../cerrar_conexion.php");
-        }
         if (isset($_POST['boton2'])) {
             include("../abrir_conexion.php");
 
@@ -152,19 +129,40 @@
             $cliente = $_POST['cliente'];
             $fecha = $_POST['fecha'];
             $descripcion = $_POST['descripcion'];
-            $valorT = $_POST['valorTotal'];
 
-            $conexion->query("INSERT INTO $tabla1 (idFactura,idUsu,fecha,descripcion,valorTotal) values ('$codigo','$cliente','$fecha','$descripcion','$valorT')");
+            $conexion->query("INSERT INTO $tabla1 (idFactura,idUsu,fecha,descripcion) values ('$codigo','$cliente','$fecha','$descripcion')");
 
             echo '<script type="text/javascript">
             Swal.fire({
                 icon: "success",
                 title: "Generación exitosa",
-                text: "Completaste con éxito la generación del nuevo formulario!",
+                text: "Completaste con éxito la generación de la nueva factura!",
             });
             </script>';
             include("../cerrar_conexion.php");
         }
+        if (isset($_POST['boton'])) {
+            include("../abrir_conexion.php");
+
+            $codigoF = $_POST['idFactura'];
+            $codigoJ = $_POST['idJuguete'];
+            $cantidad = $_POST['cantidad'];
+            $valorUni = $_POST['valorUni'];
+            $valorTotal = $_POST['valorTotal'];
+
+            $conexion->query("INSERT INTO $tabla4 (idFact,idJugu,cantidad,valorUnita,valorTotal) values ('$codigoF','$codigoJ','$cantidad','$valorUni','$valorTotal')");
+
+            echo '<script type="text/javascript">
+            Swal.fire({
+                icon: "success",
+                title: "Generación exitosa",
+                text: "La primer parte de la factura fue creada, continua con la siguiente por favor",
+            });
+            </script>';
+
+            include("../cerrar_conexion.php");
+        }
+        
         ?>
     </div>
 

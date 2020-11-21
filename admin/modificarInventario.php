@@ -46,92 +46,94 @@
     </nav>
 
     <nav class="navbar navbar-light" style="border-bottom: 1px solid rgb(233, 233, 233); background-color: rgb(255, 255, 255);">
-        <a class="navbar-brand" style="color:#e63378;">Inventarios / Generar Inventario</a>
+        <a class="navbar-brand" style="color:#e63378;">Inventarios / Modificar Inventario</a>
         <button type="button" class="btn btn-info"><a href="inventario.php" style="color:white; text-decoration:none;">Atrás</a></button>
     </nav>
 
-    <div class="alert alert-primary" role="alert">
-        No olvides ingresar el código del nuevo inventario y tu id de usuario en el formulario inferior para que estos se registren exitosamente!
-    </div>
-
     <div class="container-fluid ">
         <div class="container mt-5 mb-5 pt-4">
-            <form method="POST" action="registrarInventarios.php" class="m-3">
-                <p>Diligencia el formulario para generar un nuevo Inventario</p>
+            <form method="POST" action="modificarInventario.php" class="m-3">
+                <p>Diligencia el formulario para buscar el inventario que deseas actualizar</p>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Código</label>
+                    <div class="form-group col-md-12">
+                        <label>Código del inventario</label>
                         <input type="text" class="form-control" name="codigo">
                     </div>
-                    <div class="form-group col-md-6">
-                        <label>Fecha</label>
-                        <input type="date" class="form-control" name="fecha">
-                    </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Descripción</label>
-                        <input type="text" class="form-control" name="descripcion">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-success" name="boton">Generar</button>
+                <button type="submit" class="btn btn-primary" name="boton">Buscar</button>
             </form>
+
+            <?php
+            if (isset($_POST['boton'])) {
+                include("../abrir_conexion.php");
+
+                $codigo = $_POST['codigo'];
+
+                if ($codigo == "") {
+                    echo '<script type="text/javascript">
+                Swal.fire({
+                    icon: "error",
+                    title: "No se consulto ningún inventario",
+                    text: "Por favor digita el código de un inventario",
+                });
+                </script>';
+                } else {
+
+                    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla3 WHERE idInventario = $codigo");
+
+                    while ($consulta = mysqli_fetch_array($resultados)) {
+                        echo '
+                        <form method="POST" action="modificarInventario.php" class="m-3">
+                            <table class="table table-bordered mt-5">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código inventario</th>
+                                        <th scope="col">Fecha de creación</th>
+                                        <th scope="col">Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text" value=' . $consulta['idInventario'] . ' name="codigo" style="width:100%"></td>
+                                        <td><input type="text" value=' . $consulta['fechaInventario'] . ' name="fecha" style="width:100%"></td>
+                                        <td><input type="text" value=' . $consulta['descripcion'] . ' name="descripcion" style="width:100%"></td>
+                                    </tr>
+                                </tbody>
+                            </table> 
+                            <button type="submit" class="btn btn-success" name="boton2">Modificar</button>                       
+                        </form>
+                    ';
+                    }
+                }
+                include("../cerrar_conexion.php");
+            }
+
+            if (isset($_POST['boton2'])) {
+
+                include("../abrir_conexion.php");
+
+                $codigo = $_POST['codigo'];
+                $fecha = $_POST['fecha'];
+                $descripcion = $_POST['descripcion'];
+
+                $conexion->query("UPDATE $tabla3 SET descripcion='$descripcion' WHERE idInventario=$codigo");
+
+                echo '
+                <script type="text/javascript">
+                Swal.fire({
+                    icon: "success",
+                    title: "¡Inventario modificado!",
+                    text: "Los datos han sido modificados correctamente",
+                });
+                </script>';
+
+                include("../cerrar_conexion.php");
+            }
+            ?>
+
         </div>
 
-        <div class="container mt-5 mb-5 pt-4">
-            <form method="POST" action="registrarInventarios.php" class="m-3">
-                <p>Diligencia el formulario para registrar completamente la generación del inventario</p>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>Código</label>
-                        <input type="text" class="form-control" name="idInventario">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Usuario</label>
-                        <input type="text" class="form-control" name="usuario">
-                    </div>
-                    <button type="submit" class="btn btn-success" name="boton2">Registrar</button>
-                </div>
-            </form>
-        </div>
 
-        <?php
-        if (isset($_POST['boton'])) {
-            include("../abrir_conexion.php");
-
-            $codigo = $_POST['codigo'];
-            $fecha = $_POST['fecha'];
-            $descripcion = $_POST['descripcion'];
-
-            $conexion->query("INSERT INTO $tabla3 (idInventario,fechaInventario,descripcion) values ('$codigo','$fecha','$descripcion')");
-
-            echo '<script type="text/javascript">
-            Swal.fire({
-                icon: "success",
-                title: "Generación exitosa",
-                text: "El nuevo inventario fue generado correctamente!",
-            });
-            </script>';
-
-            include("../cerrar_conexion.php");
-        }
-        if (isset($_POST['boton2'])) {
-            include("../abrir_conexion.php");
-            $inventario = $_POST['idInventario'];
-            $autor = $_POST['usuario'];
-
-            $conexion->query("INSERT INTO $tabla9 (idInv,idUs) values ('$inventario','$autor')");
-
-            echo '<script type="text/javascript">
-            Swal.fire({
-                icon: "success",
-                title: "Generación exitosa",
-                text: "Completaste con éxito la generación del nuevo formulario!",
-            });
-            </script>';
-            include("../cerrar_conexion.php");
-        }
-        ?>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

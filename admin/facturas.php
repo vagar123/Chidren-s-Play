@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Css/usuarios.css">
+    <link rel="stylesheet" href="Css/inventario.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -36,10 +36,10 @@
                     <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="facturas.php">Ventas</a>
+                    <a class="nav-link" href="#">Ventas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../index.html">Salir</a>
@@ -49,17 +49,16 @@
     </nav>
 
     <div class="container mt-5 mb-5 pt-4">
-        <h2 class="titulo pb-4">Usuarios</h2>
-
-        <nav class="navbar navbar-light bg-light mt-1 mb-1">
+        <h2 class="titulo pb-4">Facturas actuales</h2>
+        <nav class="navbar navbar-light bg-light navbarD">
             <a class="navbar-brand" href="#">Herramientas</a>
-            <div style="display:flex; justify-content:right;">
-                <button type="button" class="btn btn-success mr-3"><a href="registrarUsuario.php" style="color:white; text-decoration:none;">Registrar Usuario</a></button>
-                <button type="button" class="btn btn-danger mr-3" data-toggle="modal" data-target="#eliminarModal">
-                    Eliminar Usuario
+            <ul class="list-group list-group-horizontal">
+                <button type="button" class="btn btn-success mr-4"><a href="registrarInventarios.php" style="color:white; text-decoration:none;">Generar nueva Factura</a></button>
+                <button type="button" class="btn btn-danger mr-4" data-toggle="modal" data-target="#eliminarModal">
+                    Eliminar Factura
                 </button>
-                <button type="button" class="btn btn-info mr-3"><a href="modificarUsuario.php" style="color:white; text-decoration:none;">Modificar Usuario</a></button>
-            </div>
+                <button type="button" class="btn btn-info mr-4"><a href="modificarFactura.php" style="color:white; text-decoration:none;">Modificar Factura</a></button>
+            </ul>
         </nav>
 
         <!-- Modal Eliminar inventario -->
@@ -67,7 +66,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminar usuario</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar Factura</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -75,7 +74,7 @@
                     <div class="modal-body">
                         <form method="POST">
                             <div class="form-group">
-                                <label>Digita el documento del usuario que desees eliminar</label>
+                                <label>Digita el código de la factura que desees eliminar</label>
                                 <input type="text" class="form-control" name="codigo">
                             </div>
                             <div class="modal-footer">
@@ -89,14 +88,14 @@
         </div>
 
         <div>
-            <form class="form-inline pt-4 pb-4" method="POST" action="usuarios.php">
+            <form class="form-inline pt-4 pb-4" method="POST">
                 <div class="form-group mb-2">
-                    <label>Consulta la información de un usuario, ingresa su número de documento</label>
+                    <label>Consulta la información de la requerida factura, ingresa el Id de la factura</label>
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="text" class="form-control" name="cargo" placeholder="Cargo" autocomplete="off">
+                    <input type="text" class="form-control" name="codigo" autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary" name="btn2">Consultar</button>
+                <button type="submit" class="btn btn-primary mb-2" name="boton">Consultar</button>
             </form>
         </div>
 
@@ -109,55 +108,66 @@
         <table class='table table-bordered' style="margin-bottom:35px;">
             <thead>
                 <tr>
-                    <th scope='col'>Documento</th>
-                    <th scope='col'>Nombre</th>
-                    <th scope='col'>Apellido</th>
-                    <th scope='col'>Correo electrónico</th>
-                    <th scope='col'>Teléfono</th>
-                    <th scope='col'>Género</th>
-                    <th scope='col'>Rol</th>
+                    <th scope='col'>Id factura</th>
+                    <th scope='col'>Cliente</th>
+                    <th scope='col'>Fecha</th>
+                    <th scope='col'>Juguete</th>
+                    <th scope='col'>Cantidad</th>
+                    <th scope='col'>Valor total</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 include("../abrir_conexion.php");
-                $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8");
+
+                $resultados = mysqli_query($conexion, "SELECT $tabla1.idFactura, $tabla1.idUsu, $tabla1.fecha, $tabla4.idJugu, $tabla4.cantidad, $tabla4.valorTotal FROM $tabla1 INNER JOIN $tabla4 ON $tabla1.idFactura = $tabla4.idFact INNER JOIN $tabla6 ON $tabla4.idJugu = $tabla6.idJuguete");
+
                 while ($consulta = mysqli_fetch_array($resultados)) {
                     echo "
                   <tr>
-                    <th>" . $consulta['idUsuario'] . "</th>
-                    <td>" . $consulta['nomUsuario'] . "</td>
-                    <td>" . $consulta['apellUsuario'] . "</td>
-                    <td>" . $consulta['correoUsuario'] . "</td>
-                    <td>" . $consulta['teleUsuario'] . "</td>
-                    <td>" . $consulta['generoUsuario'] . "</td>
-                    <td>" . $consulta['rolUsuario'] . "</td>
+                    <th>" . $consulta['idFactura'] . "</th>
+                    <td>" . $consulta['idUsu'] . "</td>
+                    <td>" . $consulta['fecha'] . "</td>
+                    <td>" . $consulta['idJugu'] . "</td>
+                    <td>" . $consulta['cantidad'] . "</td>
+                    <td>" . $consulta['valorTotal'] . "</td>
                   </tr>
                 ";
                 }
-                if (isset($_POST['btn2'])) {
-                    $cargo = $_POST['cargo'];
+                if (isset($_POST['boton'])) {
 
-                    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla8 WHERE idUsuario=$cargo");
+                    $codigo = $_POST['codigo'];
+
+                    $resultados = mysqli_query($conexion, "SELECT $tabla1.idFactura, $tabla1.idUsu, $tabla8.nomUsuario, $tabla8.apellUsuario, $tabla1.fecha, $tabla6.nomJuguete, $tabla4.cantidad, $tabla4.valorTotal, $tabla1.descripcion FROM $tabla8 INNER JOIN
+                    $tabla1 ON $tabla8.idUsuario = $tabla1.idUsu INNER JOIN $tabla4 ON $tabla1.idFactura = $tabla4.idFact INNER JOIN $tabla6 ON $tabla4.idJugu = $tabla6.idJuguete WHERE $tabla1.idFactura=$codigo");
 
                     while ($consulta = mysqli_fetch_array($resultados)) {
                         echo "
                         <table class='table table-bordered' style='margin-top: 35px; margin-bottom:40px;'>
-                        <p>Información de los inventarios, consulta en el formulario para conocer más información</p>
                         <thead>
                         <tr>
-                        <th scope='col'>Código</th>
-                        <th scope='col'>Nombre</th>
-                        <th scope='col'>Apellido</th>
-                        <th scope='col'>Cargo</th>
+                        <th scope='col'>Id Factura</th>
+                        <th scope='col'>Id Cliente</th>
+                        <th scope='col'>Nombre Cliente</th>
+                        <th scope='col'>Apellido Cliente</th>
+                        <th scope='col'>Fecha</th>
+                        <th scope='col'>Juguete</th>
+                        <th scope='col'>Cantidad</th>
+                        <th scope='col'>Valor total</th>
+                        <th scope='col'>Descripción</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
-                            <td>" . $consulta['idUsuario'] . "</td>
+                            <td>" . $consulta['idFactura'] . "</td>
+                            <td>" . $consulta['idUsu'] . "</td>
                             <td>" . $consulta['nomUsuario'] . "</td>
                             <td>" . $consulta['apellUsuario'] . "</td>
-                            <td>" . $consulta['rolUsuario'] . "</td>
+                            <td>" . $consulta['fecha'] . "</td>
+                            <td>" . $consulta['nomJuguete'] . "</td>
+                            <td>" . $consulta['cantidad'] . "</td>
+                            <td>" . $consulta['valorTotal'] . "</td>
+                            <td>" . $consulta['descripcion'] . "</td>
                             </tr>
                         </tbody>
                         </table>
@@ -172,23 +182,25 @@
                         echo '<script type="text/javascript">
                         Swal.fire({
                             icon: "error",
-                            title: "No se elimino el usuario",
-                            text: "Por favor digita correctamente el número de documento de un usuario",
+                            title: "No se elimino la factura",
+                            text: "Por favor digita el código de una factura",
                         });
                         </script>';
                     } else {
-                        $resultados = mysqli_query($conexion, "DELETE FROM $tabla8 WHERE idUsuario = $codigo");
+                        $resultados = mysqli_query($conexion, "DELETE FROM $tabla1 WHERE idFactura = $codigo");
 
                         echo '<script type="text/javascript">
                         Swal.fire({
                             icon: "success",
-                            title: "¡Inventario eliminado!",
-                            text: "Se eliminó el usuario con éxito",
+                            title: "Factura eliminado!",
+                            text: "Se eliminó la factura con éxito",
                         });
                         </script>';
                     }
                 }
+
                 include("../cerrar_conexion.php");
+
                 ?>
             </tbody>
         </table>
