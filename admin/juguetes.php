@@ -26,22 +26,19 @@
                     <a class="nav-link" href="#" style="color:white;">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./proyecto/admin/inventarios.php">Inventario</a>
+                    <a class="nav-link" href="inventario.php">Inventario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./proyecto/admin/proveedores.php">Proveedores</a>
+                    <a class="nav-link" href="proveedores.php">Proveedores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./proyecto/admin/registrarUsuario.php">Usuarios</a>
+                    <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ventas</a>
+                    <a class="nav-link" href="facturas.php">Ventas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi cuenta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="../index.html">Salir</a>
                 </li>
             </ul>
         </div>

@@ -38,13 +38,10 @@
                     <a class="nav-link" href="usuarios.php">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Ventas</a>
+                    <a class="nav-link" href="facturas.php">Ventas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi cuenta</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="../index.html">Salir</a>
                 </li>
             </ul>
         </div>
@@ -85,14 +82,54 @@
 
         <div style="width: 100%; margin-top: 60px;">
             <h2 class="titulo pb-4" style="margin-left: 50px; color: #e63378; font-family: 'Nunito', sans-serif; font-weight: 700;">Proveedores actuales</h2>
-            <nav class="navbar navbar-light bg-light" style="width: 100%; margin-left:50px;">
+
+            <nav class="navbar navbar-light bg-light mb-4" style="width: 100%; margin-left:50px;">
                 <p>Consulta los productos que ha entregado cada proveedor, ingrese por favor el código del proveedor.</p>
                 <form class="form-inline pt-4 pb-4" method="POST" action="proveedores.php">
                     <button type="submit" class="btn btn-primary mb-2" name="boton">Consultar</button>
                 </form>
-                <button type='button' class='btn btn-success'><a href="registrarProveedores.php" style="color:white; text-decoration:none;">Ingresar proveedor</a></button>
+                <div style="display: flex; justify-content:left;">
+                    <button type='button' class='btn btn-success mr-4'><a href="registrarProveedores.php" style="color:white; text-decoration:none;">Ingresar proveedor</a></button>
+                    <button type="button" class="btn btn-danger mr-4" data-toggle="modal" data-target="#eliminarModal">
+                        Eliminar Proveedor
+                    </button>
+                    <button type="button" class="btn btn-info mr-4"><a href="modificarProveedor.php" style="color:white; text-decoration:none;">Modificar Proveedor</a></button>
+                </div>
             </nav>
-            <table class="table" style="width: 100%; margin:50px;">
+
+            <!-- Modal Eliminar inventario -->
+            <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar proveedor</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <div class="form-group">
+                                    <label>Digita el código del proveedor que desees eliminar</label>
+                                    <input type="text" class="form-control" name="codigo">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" name="boton2">Eliminar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-primary mb-4" role="alert" style="margin-left: 50px;">
+                Cuando elimines un registro recuerda actualizar la tabla de datos!!!
+            </div>
+
+            <button type="submit" class="btn btn-secondary mb-4" onclick="location.reload()" style="margin-left: 50px;">Actualizar tabla de datos </button>
+
+            <table class="table" style="width: 100%; margin-left:50px; margin-top:30px;">
                 <thead style="background-color: #17a2b8; color:white;">
                     <tr>
                         <th scope='col'>Código</th>
@@ -106,9 +143,9 @@
                 <tbody>
                     <?php
                     include("../abrir_conexion.php");
-                        $resultados = mysqli_query($conexion, "SELECT * FROM $tabla7");
-                        while ($consulta = mysqli_fetch_array($resultados)) {
-                            echo "
+                    $resultados = mysqli_query($conexion, "SELECT * FROM $tabla7");
+                    while ($consulta = mysqli_fetch_array($resultados)) {
+                        echo "
                                 <tr>
                                     <td>" . $consulta['idProveedor'] . "</td>
                                     <td>" . $consulta['nomProveedor'] . "</td>
@@ -118,11 +155,11 @@
                                     <td>" . $consulta['fechaEntrada'] . "</td>
                                 </tr>
                             ";
-                        }
-                        if (isset($_POST['boton'])) {
-                            $resultados = mysqli_query($conexion, "SELECT $tabla7.idProveedor, $tabla7.nomProveedor, $tabla6.idJuguete, $tabla6.nomJuguete FROM $tabla7 INNER JOIN $tabla5 ON $tabla7.idProveedor = $tabla5.idProv INNER JOIN $tabla6 ON $tabla5.idJug = $tabla6.idJuguete");
-                            
-                            echo "
+                    }
+                    if (isset($_POST['boton'])) {
+                        $resultados = mysqli_query($conexion, "SELECT $tabla7.idProveedor, $tabla7.nomProveedor, $tabla6.idJuguete, $tabla6.nomJuguete FROM $tabla7 INNER JOIN $tabla5 ON $tabla7.idProveedor = $tabla5.idProv INNER JOIN $tabla6 ON $tabla5.idJug = $tabla6.idJuguete");
+
+                        echo "
                                 <table class='table' style='width: 100%; margin:50px;'>
                                 <thead style='background-color: #17a2b8; color: white;'>
                                     <tr>
@@ -133,9 +170,9 @@
                                     </tr>
                                 </thead>
                             ";
-                            
-                            while ($consulta = mysqli_fetch_array($resultados)) {
-                                echo "
+
+                        while ($consulta = mysqli_fetch_array($resultados)) {
+                            echo "
                                     <tbody>
                                         <tr>
                                         <td>" . $consulta['idProveedor'] . "</td>
@@ -145,8 +182,32 @@
                                         </tr>
                                     </tbody>
                                 ";
-                            }
                         }
+                    }
+                    if (isset($_POST['boton2'])) {
+
+                        $codigo = $_POST['codigo'];
+
+                        if ($codigo == "") {
+                            echo '<script type="text/javascript">
+                            Swal.fire({
+                                icon: "error",
+                                title: "No se elimino el proveedor",
+                                text: "Por favor digita el código de un proveedor",
+                            });
+                            </script>';
+                        } else {
+                            $resultados = mysqli_query($conexion, "DELETE FROM $tabla7 WHERE idProveedor = $codigo");
+
+                            echo '<script type="text/javascript">
+                            Swal.fire({
+                                icon: "success",
+                                title: "Proveedor eliminado!",
+                                text: "Se eliminó el proveedor con éxito",
+                            });
+                            </script>';
+                        }
+                    }
                     include("../cerrar_conexion.php");
                     ?>
                 </tbody>
@@ -154,4 +215,5 @@
         </div>
     </div>
 </body>
+
 </html>
