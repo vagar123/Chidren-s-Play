@@ -53,7 +53,7 @@
         <nav class="navbar navbar-light bg-light navbarD">
             <a class="navbar-brand" href="#">Herramientas</a>
             <ul class="list-group list-group-horizontal">
-                <button type="button" class="btn btn-success mr-4"><a href="registrarInventarios.php" style="color:white; text-decoration:none;">Generar nueva Factura</a></button>
+                <button type="button" class="btn btn-success mr-4"><a href="registrarFactura.php" style="color:white; text-decoration:none;">Generar nueva Factura</a></button>
                 <button type="button" class="btn btn-danger mr-4" data-toggle="modal" data-target="#eliminarModal">
                     Eliminar Factura
                 </button>

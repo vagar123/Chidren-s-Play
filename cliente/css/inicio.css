@@ -1,0 +1,20 @@
+.navbar{
+    background-color: rgba(0, 0, 0, 0.883);
+    border-bottom: rgba(0, 0, 0, 0.883);
+}
+
+.row .card{
+    margin: 20px;
+}
+
+footer{
+    background-color: rgba(0, 0, 0, 0.883);
+    border-top: rgba(0, 0, 0, 0.883);
+}
+
+.container-fluid h2{
+    color: #e63378;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
