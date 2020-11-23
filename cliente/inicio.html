@@ -1,11 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Child's Play</title>
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/inicio.css">
+
 </head>
+
 <body>
-    <p>Hola Cliente</p>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"><img src="../img/logoH.png" alt="logo" width="150"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../index.html" style="color: white;">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mb-5">
+        <h2 class="m-5">Juguetes disponibles</h2>
+
+        <div class="row" style="display: flex; justify-content: center;">
+            <div class="card" style="width: 18rem;">
+                <img src="https://i.ytimg.com/vi/U19QBQVoMRk/maxresdefault.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Barbie Mercado</h5>
+                    <p class="card-text">Barbie Mercado de la nueva colección de Mattel, Kit completo de un carrito
+                        de
+                        mercado y accesorios</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Muñeca Barbie</li>
+                    <li class="list-group-item">Carrito de mercado</li>
+                    <li class="list-group-item">Verduras</li>
+                </ul>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_657348-MCO42682770619_072020-O.jpg" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Oso Lotso</h5>
+                    <p class="card-text">Oso lotso de Toy Story</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Peluche</li>
+                </ul>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://falabella.scene7.com/is/image/FalabellaCO/4188483_1?q=i?wid=800&hei=800&qlt=70"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Rompecabezas Paw patrol</h5>
+                    <p class="card-text">Rompecabezas Paw patrol 24 piezas</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">24 Piezas fondo Paw patrols</li>
+                </ul>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display: flex; justify-content: center;">
+            <div class="card" style="width: 18rem;">
+                <img src="https://ladoctorajuguetes.com/wp-content/uploads/2016/11/Juguete-de-la-Doctora-Juguetes.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Doctora Juguetes</h5>
+                    <p class="card-text">Kito Doctora Juguete, acompañante oveja y otros accesorios</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Muñeca</li>
+                    <li class="list-group-item">Oveja peluche</li>
+                </ul>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal4">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://ae01.alicdn.com/kf/HTB1QjOyaYus3KVjSZKbq6xqkFXaj/Hotwheels-pista-de-carreras-de-arrastre-para-chico-juguete-de-carreras-campe-n-de-autom-viles.jpg_q50.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pista Hot Wheels</h5>
+                    <p class="card-text">Carrera de pistas hot wheels 2 metros</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">1 Carrito de carreras</li>
+                </ul>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal5">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://www.marvelbatalladesuperheroes.com/wp-content/uploads/2019/06/figura-de-iron-man-mark-42-comprar.jpg"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Iron man</h5>
+                    <p class="card-text">Figura de acción Iron man avengers</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Color rojo y dorado</li>
+                </ul>
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">
+                        Ver detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal1 -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Barbie Mercado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://i.ytimg.com/vi/U19QBQVoMRk/maxresdefault.jpg" class="card-img-top" alt="...">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Oso lotso</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_657348-MCO42682770619_072020-O.jpg"
+                        class="card-img-top" alt="...">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal3 -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Rompecabezas Paw patrol</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://falabella.scene7.com/is/image/FalabellaCO/4188483_1?q=i?wid=800&hei=800&qlt=70"
+                        class="card-img-top" alt="...">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal4 -->
+    <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Doctora Juguetes</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://ladoctorajuguetes.com/wp-content/uploads/2016/11/Juguete-de-la-Doctora-Juguetes.jpg"
+                        class="card-img-top" alt="...">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal5 -->
+    <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pista de carreras</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://ae01.alicdn.com/kf/HTB1QjOyaYus3KVjSZKbq6xqkFXaj/Hotwheels-pista-de-carreras-de-arrastre-para-chico-juguete-de-carreras-campe-n-de-autom-viles.jpg_q50.jpg"
+                        class="card-img-top" alt="...">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal6 -->
+    <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Iron man</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://www.marvelbatalladesuperheroes.com/wp-content/uploads/2019/06/figura-de-iron-man-mark-42-comprar.jpg"
+                        class="card-img-top" alt="...">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer font-small stylish-color-dark pt-4">
+        <div class="container text-center text-md-left">
+            <div class="row">
+                <div class="col-md-4 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white;">Footer Content</h5>
+                    <p style="color: white;">Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipisicing elit.</p>
+
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white;">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!" style="color: white;">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white;">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!" style="color: white;">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-md-2 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4" style="color: white;">Links</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!" style="color: white;">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" style="color: white;">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1" style="color: white;">Registrate totalmente gratis</h5>
+            </li>
+            <li class="list-inline-item">
+                <a href="#!" class="btn btn-danger btn-rounded">Registrate!!</a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="list-unstyled list-inline text-center">
+            <li class="list-inline-item">
+                <a class="btn-floating btn-fb mx-1">
+                    <img src="./img/facebook.png" alt="facebook" width="30">
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn-floating btn-tw mx-1">
+                    <img src="./img/gorjeo.png" alt="twitter" width="30">
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn-floating btn-gplus mx-1">
+                    <img src="./img/google-mas.png" alt="google" width="30">
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn-floating btn-li mx-1">
+                    <img src="./img/instagram.png" alt="instagram" width="30">
+                </a>
+            </li>
+        </ul>
+
+        <div class="footer-copyright text-center py-3" style="color: white;">© 2020 Copyright:
+            <a href="#" style="color: white;"> Children's Play.com</a>
+        </div>
+    </footer>
+    <!-- Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -58,6 +58,7 @@
                     Eliminar Inventario
                 </button>
                 <button type="button" class="btn btn-info mr-4"><a href="modificarInventario.php" style="color:white; text-decoration:none;">Modificar Inventario</a></button>
+                <button type="button" class="btn mr-4" style="background-color: #e63378;"><a href="juguetes.php" style="color:white; text-decoration:none;">Juguetes</a></button>
             </ul>
         </nav>
 
